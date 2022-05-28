@@ -1,11 +1,7 @@
-# Title
+# APPI course
 
-Some paragraphs
- 
-- List item 1
-- List item 2
+This repository contains all the files produced in the APPI course. Under `src` the Python source code files and under `docs` is the documentation.
 
-## Sub title
+## Raytracer (Capstone)
 
-### Sub sub title
-
+TBD
