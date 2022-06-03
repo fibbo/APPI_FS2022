@@ -13,6 +13,9 @@ class Complex:
         new_imaginary = self.real * other.imaginary + self.imaginary * other.real
         return Complex(new_real, new_imaginary)
 
+    def __neg__(self):
+        return Complex(-self.real, -self.imaginary)
+
     def __str__(self):
         return f"{self.real} + {self.imaginary}i"
 
