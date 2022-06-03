@@ -12,7 +12,7 @@ class Animal:
 class Mammal(Animal):
     def __init__(self, weight):
         super().__init__(weight)
-    
+
     def info(self):
         print(f"Abstract mammal")
 
@@ -28,6 +28,7 @@ class Cat(Mammal):
 
     def noise(self):
         print("Meow")
+
 
 my_cat = Cat(5, "white")
 my_cat.noise()

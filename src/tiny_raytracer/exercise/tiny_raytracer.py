@@ -9,6 +9,7 @@ import requests as req
 
 float_max = sys.float_info.max
 
+
 def ray_sphere_intersect(origin, direction, sphere):
     l = sphere.center - origin
     tca = l.dot(direction)
