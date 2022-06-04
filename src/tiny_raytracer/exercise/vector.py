@@ -2,14 +2,14 @@ import math
 
 
 class Vector:
-    # TODO: Implement constructor
     def __init__(self, *args):
         self.components = []
         for arg in args:
             self.components.append(arg)
         self.size = len(self.components)
 
-    # TODO: Implement __str__
+    def __str__(self):
+        return f"Components: {self.components}"
 
     @property
     def x(self):
@@ -71,10 +71,11 @@ class Vector:
     def __mul__(self, other):
         new_vector = []
         for n in self.components:
-            new_vector.append(other * n)
+            new_vector.append(n * other)
 
         return Vector(*new_vector)
 
+    # other * self
     def __rmul__(self, other):
         return self * other
 
@@ -90,6 +91,8 @@ class Vector:
                 return False
         return True
 
-    def __getitem__(self, index):
+    def __getitem__(self, index): # vec[index]
         return self.components[index]
 
+if __name__ == "__main__":
+    print("You called this file directly")
