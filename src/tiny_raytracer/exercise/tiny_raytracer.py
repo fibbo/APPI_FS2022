@@ -152,8 +152,36 @@ def read_scene(url):
     spheres = []
     materials = {}
 
-    # TODO: Get text from url and parse the scene
-    url = "https://gist.githubusercontent.com/fibbo/1cee2353e67dba182f8f3c6d275c23ba/raw/1b43758911f801d2369c59004360e66826832f92/scene_01.txt"
+    answer = req.get(url)
+
+    scene_object_type = None
+    for line in answer.text.split("\n"):
+
+        if line == "":
+            continue
+
+        parts = line.split()
+        if line.startswith("#"):
+            scene_object_type = parts[1]
+        else:
+            if scene_object_type == "materials":
+                name = parts[0]
+                refractive = float(parts[1])
+                albedo = Vector(
+                    float(parts[2]), float(parts[3]), float(parts[4]), float(parts[5])
+                )
+                color = Vector(float(parts[6]), float(parts[7]), float(parts[8]))
+                specular = float(parts[9])
+                materials[name] = Material(name, refractive, albedo, color, specular)
+            elif scene_object_type == "spheres":
+                center = Vector(float(parts[0]), float(parts[1]), float(parts[2]))
+                radius = float(parts[3])
+                material = materials[parts[4]]
+                spheres.append(Sphere(center, radius, material))
+            elif scene_object_type == "lights":
+                position = Vector(float(parts[0]), float(parts[1]), float(parts[2]))
+                intensity = float(parts[3])
+                lights.append(Light(position, intensity))
 
     return Scene(lights=lights, spheres=spheres)
 
@@ -172,7 +200,7 @@ def load_scene_from_file(file_name):
             return scene
 
 
-def main():
+def get_scene():
     ivory = Material(
         "ivory", 1.0, Vector(0.6, 0.3, 0.1, 0.0), Vector(0.4, 0.4, 0.3), 50
     )
@@ -207,6 +235,14 @@ def main():
         Light(Vector(30, 20, 30), 1.7),
     ]
     scene = Scene(lights=lights, spheres=spheres)
+    return scene
+
+
+def main():
+    # scene = get_scene()
+    scene = read_scene(
+        "https://gist.githubusercontent.com/fibbo/1cee2353e67dba182f8f3c6d275c23ba/raw/1b43758911f801d2369c59004360e66826832f92/scene_01.txt"
+    )
     print(scene)
     render(scene)
 
