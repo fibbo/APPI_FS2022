@@ -8,6 +8,11 @@ class Scene(SceneBase):
         self.spheres = spheres
 
     # TODO: Implement __getitem__
+    def __getitem__(self, name):
+        if name == "lights":
+            return self.lights
+        if name == "spheres":
+            return self.spheres
 
     # TODO: Implement __str__
     def __str__(self):

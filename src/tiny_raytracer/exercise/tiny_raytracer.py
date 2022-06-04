@@ -83,10 +83,10 @@ def scene_intersect(origin, direction, spheres):
 def cast_ray(origin, direction, spheres, lights, depth=0):
 
     if depth > 4:
-        return Vector(0.2, 0.7, 0.8)
+        return Vector(0.96, 0.82, 0.56)
     has_hit, point, normal, material = scene_intersect(origin, direction, spheres)
     if not has_hit:
-        return Vector(0.2, 0.7, 0.8)
+        return Vector(0.96, 0.82, 0.56)
 
     reflect_dir = reflect(direction, normal).normalize()
     refract_dir = refract(direction, normal, material.refractive_index).normalize()
@@ -188,7 +188,7 @@ def main():
     spheres = [
         Sphere(Vector(-3, 0, -16), 2, ivory),
         Sphere(Vector(-1.0, -1.5, -12), 2, glass),
-        Sphere(Vector(1.5, -0.5, -18), 3, red_rubber),
+        Sphere(Vector(3.5, 0.5, -18), 3, red_rubber),
         Sphere(
             Vector(
                 7,
