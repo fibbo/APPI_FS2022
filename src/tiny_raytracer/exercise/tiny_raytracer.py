@@ -153,6 +153,7 @@ def read_scene(url):
     materials = {}
 
     # TODO: Get text from url and parse the scene
+    url = "https://gist.githubusercontent.com/fibbo/1cee2353e67dba182f8f3c6d275c23ba/raw/1b43758911f801d2369c59004360e66826832f92/scene_01.txt"
 
     return Scene(lights=lights, spheres=spheres)
 
