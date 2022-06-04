@@ -14,7 +14,7 @@ class Circle(Shape):
         self.radius = radius
 
     def area(self):
-        return math.pi * self.radius ** 2
+        return math.pi * self.radius**2
 
     def circumference(self):
         return 2 * math.pi * self.radius
@@ -37,7 +37,7 @@ class Square(Shape):
         self.side_length = side_length
 
     def area(self):
-        return self.side_length ** 2
+        return self.side_length**2
 
     def circumference(self):
         return 4 * self.side_length

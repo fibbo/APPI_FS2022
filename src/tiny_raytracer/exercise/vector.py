@@ -91,8 +91,9 @@ class Vector:
                 return False
         return True
 
-    def __getitem__(self, index): # vec[index]
+    def __getitem__(self, index):  # vec[index]
         return self.components[index]
+
 
 if __name__ == "__main__":
     print("You called this file directly")
